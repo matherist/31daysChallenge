@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+typedef long long ll;
+using namespace std;
+ 
+int main() {
+    long long t;
+    cin >> t;
+ 
+    priority_queue<long long> pq;
+ 
+    while (t--) {
+        long long x, y;
+        cin >> x;
+        if (x != 1) {
+            cin >> y;
+            pq.emplace(y);
+        } else {
+            if (!pq.empty()) {
+                cout << pq.top() << endl;
+                pq.pop();
+            }
+        }
+    }
+    return 0;
+}
