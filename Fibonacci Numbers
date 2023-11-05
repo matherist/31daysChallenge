@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+#define MOD 1000000007
+typedef long long ll;
+
+using namespace std;
+
+ll fib(ll n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+
+    ll a = 0, b = 1, c;
+    for (ll i = 2; i <= n; i++) {
+        c = (a + b) % MOD;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+int main() {
+    ll n;
+    cin >> n;
+    if(n >= MOD){
+        n = n%MOD;
+    }
+    ll result = fib(n);
+    cout << result << endl;
+    return 0;
+}
