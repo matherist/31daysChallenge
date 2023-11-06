@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+int main() {
+    string s;
+    cin >> s;
+
+
+    sort(s.begin(), s.end());
+    set<string> permutations;
+    do {
+        permutations.insert(s);
+    } while (next_permutation(s.begin(), s.end()));
+
+
+    vector<string> sorted_permutations(permutations.begin(), permutations.end());
+    sort(sorted_permutations.begin(), sorted_permutations.end());
+
+
+    cout << sorted_permutations.size() << endl;
+    for (const string& perm : sorted_permutations) {
+        cout << perm << endl;
+    }
+
+    return 0;
+}
