@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int a, b, n, m; cin >> a >> b >> n >> m;
+    if(a == 0){
+        cout << n << endl;
+        return 0;
+    }
+    if(b == 0){
+    cout << m << endl;
+    return 0;
+    }
+    int start = n + m;
+    bool cond = true;
+    while(cond){
+        if(start%n == a && start%m == b){
+            cout << start << endl;
+            return 0;
+        }
+        start++;
+    }
+}
