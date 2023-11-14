@@ -1,0 +1,23 @@
+int main() {
+	setIO();
+	int n, t, ans = 0;
+	cin >> n >> t;
+	vi books(n);
+	for (int i = 0; i < n; i++) { cin >> books[i]; }
+
+	int left = 0, right = 0, cur = 0;
+	while (left < n && right < n) {
+	   while (right < n) {
+			cur += books[right++];
+			if (cur > t) {
+				cur -= books[--right];
+				break;
+			}
+		}
+
+		ans = max(ans, right - left);
+		cur -= books[left++];
+	}
+
+	cout << ans;
+}
