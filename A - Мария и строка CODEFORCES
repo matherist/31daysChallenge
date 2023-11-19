@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+        string s;
+        int n, k;
+        cin >> n >> k >> s;
+
+        int countB = count(s.begin(), s.end(), 'B');
+
+        if (countB == k) {
+            cout << 0 << endl;
+        } else {
+            char ans = ' ';
+            int ind = 0;
+            if (countB < k) {
+                while (countB != k) {
+                    for (int i = 0; i < n; i++) {
+                        if (s[i] == 'A') {
+                            s[i] = 'B';
+                            countB++;
+                            ans = 'B';
+                            ind = i;
+                            break;
+                        }
+                    }
+                }
+                cout << "1\n" << ind + 1 << " " << ans << endl;
+            } else {
+                while (countB != k) {
+                    for (int i = 0; i < n; i++) {
+                        if (s[i] == 'B') {
+                            s[i] = 'A';
+                            countB--;
+                            ans = 'A';
+                            ind = i;
+                            break;
+                        }
+                    }
+                }
+                cout << "1\n" << ind + 1 << " " << ans << endl;
+            }
+        }
+    }
+
+    return 0;
+}
