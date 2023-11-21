@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+int dp[100000];
+
+int main() {
+    int N, K; cin >> N >> K;
+    int a[N];
+    for(int i=0; i < N; i++){
+        cin >> a[i];
+    }
+    dp[0] = 0;
+    dp[1] = abs(a[0] - a[1]);
+    for(int i=2; i < N; i++){
+        dp[i] = 1e9;
+        for(int j=1; j <= K; j++){
+            if(i-j < 0){
+                break;
+            }
+            dp[i] = min(dp[i-j] + abs(a[i] - a[i-j]), dp[i]);
+        }
+    }
+    cout << dp[N-1] << endl;
+
+}
