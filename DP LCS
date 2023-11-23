@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+int dp[10005][10005];
+using namespace std;
+
+#define int long long
+
+main() {
+    int dp[10005][10005];
+    string s, w;
+    cin >> s >> w;
+    string ans;
+
+    for (int i = 1; i <= s.size(); i++) {
+        for (int j = 1; j <= w.size(); j++) {
+            if (s[i-1] == w[j-1]) {
+                dp[i][j] = dp[i-1][j-1] + 1;
+                ans += s[i-1];
+            } else {
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+            }
+        }
+    }
+
+    cout << dp[s.size()][w.size()] << " " << ans << endl;
+
+    return 0;
+}
