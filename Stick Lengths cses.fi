@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+ 
+const int MOD = 1E9+7;
+ 
+int main() {
+    int n;
+    cin >> n;
+    int a[n+1];
+    for(int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+ 
+    sort(a, a + n);
+ 
+    ll avg = a[n/2];
+    ll res = 0;
+    for(int i = 0; i < n; i++) {
+        res += abs(a[i] - avg);
+    }
+ 
+    cout << res << endl;
+    return 0;
+}
