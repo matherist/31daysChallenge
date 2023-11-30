@@ -1,0 +1,22 @@
+
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+ 
+const int MOD = 1E9+7;
+ 
+int main()
+{
+    ll n; cin >> n;
+    int dp[10005];
+    dp[0] = 1;
+    int dices = 6;
+    for(int i=1; i <= n; i++){
+       for(int dice=1; dice <= dices; dice++){
+           if(dice > i) continue;
+           dp[i] = (dp[i]+ dp[ i - dice])%MOD;
+       }
+    }
+    cout << dp[n] << endl;
+    return 0;
+}
