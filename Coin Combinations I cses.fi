@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+#define int long long
+ 
+const int MOD = 1e9+7;
+using namespace std;
+ 
+main() {
+    int n; cin >> n;
+    int x; cin >> x;
+    int coins[n];
+    for(int i = 0; i < n; i++) {
+        cin >> coins[i];
+    }
+    int coin_num[x + 1];
+    fill(coin_num, coin_num + x + 1, 0);
+    coin_num[0] = 1;
+    for(int i = 1; i <= x; i++) {
+        for(int j = 0; j < n; j++) {
+            if(i - coins[j] >= 0) {
+                coin_num[i] = (coin_num[i - coins[j]] + coin_num[i])%MOD;
+            }
+        }
+    }
+    cout << coin_num[x] << endl;
+    return 0;
+}
