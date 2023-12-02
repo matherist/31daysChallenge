@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+#define int long long
+int dp[100005];
+const int MOD = 1e9 + 7;
+using namespace std;
+ 
+main()
+{
+    int n, maxPrice;
+    cin >> n >> maxPrice;
+    vector<int> prices(n);
+    vector<int> pages(n);
+ 
+    for (int i = 0; i < n; i++) {
+        cin >> prices[i];
+    }
+    for (int j = 0; j < n; j++) {
+        cin >> pages[j];
+    }
+ 
+    vector<int> dp(maxPrice + 1, 0);
+    for (int i = 0; i < n; i++) {
+        int bookPrice = prices[i];
+        int bookPages = pages[i];
+        for (int price = maxPrice; price >= bookPrice; price--) {
+            dp[price] = max(dp[price - bookPrice] + bookPages, dp[price]);
+        }
+    }
+ 
+    cout << dp[maxPrice] << endl;
+    return 0;
+}
