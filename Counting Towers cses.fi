@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+#define int long long
+const int MOD = 1e9 + 7;
+using namespace std;
+main() {
+    int t; cin >> t;
+    while(t--){
+        int n; cin >> n;
+        int small = 1, big = 1;
+        for(int i=1; i < n; i++){
+            int __small = 4*small + big;
+            int __big = big*2 + small;
+
+            small = __small%MOD;
+            big = __big%MOD;
+
+        }
+        cout << (small+big)%MOD << endl;
+    }
+    return 0;
+}
