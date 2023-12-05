@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+#define int long long
+const int MOD = 1e9 + 7;
+using namespace std;
+ 
+ 
+main() {
+    int t;
+    cin >> t;
+ 
+    while (t--) {
+        char col;
+        int row;
+        cin >> col >> row;
+ 
+ 
+        vector<pair<char, int>> possible_moves;
+ 
+ 
+        for (char c = 'a'; c <= 'h'; ++c) {
+            if (c != col) {
+                possible_moves.emplace_back(c, row);
+            }
+        }
+ 
+ 
+        for (int r = 1; r <= 8; ++r) {
+            if (r != row) {
+                possible_moves.emplace_back(col, r);
+            }
+        }
+ 
+ 
+        for (const auto& move : possible_moves) {
+            cout << move.first << move.second << endl;
+        }
+    }
+ 
+    return 0;
+}
